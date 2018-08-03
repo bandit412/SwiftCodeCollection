@@ -49,17 +49,17 @@ class IPAddress {
         var mask = maskString
         var octet:String
         var base10:Int
-        while (mask.characters.count) > 0{
+        while (mask.count) > 0{
             //octet = mask.substring(to: advance(mask.startIndex, 8))
             let index = mask.index(mask.startIndex, offsetBy: 8)
-            octet = mask.substring(to: index)
+            octet = String(mask[..<index])
             base10 = binaryToDecimal(octet)
             subnet = subnet + "\(padZeros(String(base10), numZeros: 3))."
-            mask = mask.substring(from: index)
+            mask = String(mask[index...])
         }
         //subnet = subnet.substringToIndex(advance(subnet.startIndex,(subnet.characters.count) - 1))
-        let subIndex = subnet.index(subnet.startIndex, offsetBy: (subnet.characters.count) - 1)
-        subnet = subnet.substring(to: subIndex)
+        let subIndex = subnet.index(subnet.startIndex, offsetBy: (subnet.count) - 1)
+        subnet = String(subnet[..<subIndex]) 
         return subnet
     }
     
@@ -69,17 +69,17 @@ class IPAddress {
         var subnet = ""
         var octet:String
         var base10:Int
-        while (binaryString.characters.count) > 0{
+        while (binaryString.count - 1) > 0{
             //octet = binaryString.substring(to: advance(binaryString.startIndex, 8))
             let index = binaryString.index(binaryString.startIndex, offsetBy: 8)
-            octet = binaryString.substring(to: index)
+            octet =  String(binaryString[..<index])
             base10 = binaryToDecimal(octet)
             subnet = subnet + "\(padZeros(String(base10), numZeros: 3))."
-            binaryString = binaryString.substring(from: index)
+            binaryString = String(binaryString[index])
         }
         //subnet = subnet.substringToIndex(advance(subnet.startIndex,(subnet.characters.count) - 1))
-        let subIndex = subnet.index(subnet.startIndex, offsetBy: (subnet.characters.count) - 1)
-        subnet = subnet.substring(to: subIndex)
+        let subIndex = subnet.index(subnet.startIndex, offsetBy: (subnet.count) - 1)
+        subnet = String(subnet[..<subIndex])
         return subnet
     }
     

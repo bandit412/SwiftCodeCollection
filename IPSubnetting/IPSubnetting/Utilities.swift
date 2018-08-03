@@ -54,7 +54,7 @@ func decimalToHex(_ base10:Int)->String{
 func binaryToDecimal(_ binary:String)->Int{
     var digit:Int
     var subTotal = 0
-    for letter in binary.characters{
+    for letter in binary{
         //print(letter)
         digit = Int(String(letter))!
         subTotal = subTotal * 2 + digit
@@ -66,7 +66,7 @@ func hexToDecimal(_ hex:String)->Int{
     var digitString:String
     var digit:Int
     var subTotal = 0
-    for letter in hex.characters{
+    for letter in hex{
         digitString = String(letter)
         switch(digitString){
         case "A":
@@ -92,14 +92,14 @@ func hexToDecimal(_ hex:String)->Int{
 // MARK: - PadZeros
 func padZeros(_ binString:String, numZeros size:Int)->String{
     var binString = binString
-    while(binString.characters.count < size){
+    while(binString.count < size){
         binString = "0" + binString
     }
     return binString
 }
 func padRight(_ binString:String, numZeros size:Int)->String{
     var binString = binString
-    while(binString.characters.count < size){
+    while(binString.count < size){
         binString = binString + "0"
     }
     return binString
@@ -109,7 +109,7 @@ func padRight(_ binString:String, numZeros size:Int)->String{
 // MARK: - InvertBits
 func invertBits(_ binString:String)->String{
     var inverted:String = ""
-    for digit in binString.characters{
+    for digit in binString{
         if (digit == "0"){
             inverted = inverted + "1"
         } else {
@@ -121,9 +121,9 @@ func invertBits(_ binString:String)->String{
 // MARK: - BitwiseAnd
 func bitwiseAND(_ bin1:String, andMask bin2:String)->String{
     var andString = ""
-    let binDigits1 = Array(bin1.characters)
-    let binDigits2 = Array(bin2.characters)
-    for i in 0..<bin1.characters.count{
+    let binDigits1 = Array(bin1)
+    let binDigits2 = Array(bin2)
+    for i in 0..<bin1.count{
         if binDigits1[i] == binDigits2[i]{
             andString = andString + "\(binDigits1[i])"
         } else {
@@ -135,9 +135,9 @@ func bitwiseAND(_ bin1:String, andMask bin2:String)->String{
 // MARK: - BitwiseOr
 func bitwiseOR(_ bin1:String, andMask bin2:String)->String{
     var orString = ""
-    let binDigits1 = Array(bin1.characters)
-    let binDigits2 = Array(bin2.characters)
-    for i in 0..<bin1.characters.count{
+    let binDigits1 = Array(bin1)
+    let binDigits2 = Array(bin2)
+    for i in 0..<bin1.count{
         if binDigits1[i] == "1" || binDigits2[i] == "1"{
             orString = orString + "1"
         } else {
@@ -150,7 +150,7 @@ func bitwiseOR(_ bin1:String, andMask bin2:String)->String{
 // MARK: - CountOnes
 func countOnes(_ binString:String)->Int{
     var count = 0
-    for digit in binString.characters{
+    for digit in binString{
         if digit == "1"{
             count = count + 1
         }
@@ -163,14 +163,14 @@ func formatBinaryString(_ binString:String)->String{
     var binString = binString
     var binary:String = ""
     var octet:String
-    while (binString.characters.count) > 0{
+    while (binString.count) > 0{
         let index = binString.index(binString.startIndex, offsetBy: 8)
         octet = binString.substring(to: index)
         binary = binary + octet + " "
         binString = binString.substring(from: index)
     }
     //binary = binary.substringToIndex(advance(binary.startIndex, binary.characters.count - 1))
-    let binIndex = binary.index(binary.startIndex, offsetBy: (binary.characters.count) - 1)
+    let binIndex = binary.index(binary.startIndex, offsetBy: (binary.count) - 1)
     binary = binary.substring(to: binIndex)
     return binary
 }

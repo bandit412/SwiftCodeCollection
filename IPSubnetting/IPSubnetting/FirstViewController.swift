@@ -69,7 +69,7 @@ class FirstViewController: UIViewController {
         } else {
             alertMsg += "Invlaid CIDR number!"
         }
-        if (alertMsg.characters.count) == 0 {
+        if (alertMsg.count) == 0 {
             updateLabels()
         } else {
             // popup alert for error messages
