@@ -73,8 +73,8 @@ class FirstViewController: UIViewController {
             updateLabels()
         } else {
             // popup alert for error messages
-            let alert = UIAlertController(title: "IPv4 Address Error!", message: alertMsg, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: "IPv4 Address Error!", message: alertMsg, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
     }
